@@ -83,11 +83,11 @@ class WebSocketEngine:
         """
         api_key = get_api_key()
 
-headers = {
-    "X-API-Key": api_key,
-    "X-Version": SKILL_VERSION,
-    "User-Agent": "Mozilla/5.0",
-    "Origin": "https://www.moltyroyale.com",
+        headers = {
+       "X-API-Key": api_key,
+        "X-Version": SKILL_VERSION,
+         "User-Agent": "Mozilla/5.0",
+         "Origin": "https://www.moltyroyale.com",
 }
 
 self._running = True
@@ -107,10 +107,10 @@ max_retries = 5
                     retry_count = 0  # Reset on successful connect
                     log.info("✅ WebSocket connected for game=%s", self.game_id)
 
-                    await ws.send(json.dumps({
-    "type": "hello",
-    "entryType": "free"
-}))
+                    await ws.send(json.dumps{
+                    "type": "hello",
+                    "entryType": "free"
+                 }   
 
                     # Start ping keepalive
                     self._ping_task = asyncio.create_task(self._ping_loop())
