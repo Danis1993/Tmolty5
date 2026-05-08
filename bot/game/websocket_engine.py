@@ -1,5 +1,5 @@
 """
-WebSocket gameplay engine — wss://cdn.moltyroyale.com/ws/agent.
+WebSocket gameplay engine — wss://cdn.moltyroyale.com/ws/join.
 Core loop: connect → process messages → decide → act → repeat.
 
 Per game-loop.md:
