@@ -82,14 +82,17 @@ class WebSocketEngine:
         Per gotchas.md: connect with X-API-Key only, no gameId/agentId params.
         """
         api_key = get_api_key()
-        headers = {
-            "X-API-Key": api_key,
-            "X-Version": SKILL_VERSION,
-        }
 
-        self._running = True
-        retry_count = 0
-        max_retries = 5
+headers = {
+    "X-API-Key": api_key,
+    "X-Version": SKILL_VERSION,
+    "User-Agent": "Mozilla/5.0",
+    "Origin": "https://www.moltyroyale.com",
+}
+
+self._running = True
+retry_count = 0
+max_retries = 5
 
         while self._running and retry_count < max_retries:
             try:
@@ -234,8 +237,7 @@ class WebSocketEngine:
 
         # ── error ─────────────────────────────────────────────────────
         elif msg_type == "error":
-            err_msg = msg.get("message", msg.get("data", {}).get("message", str(msg)))
-            log.error("Server error: %s", err_msg)
+    log.error("FULL SERVER ERROR: %s", json.dumps(msg, indent=2))
 
         # ── unknown ───────────────────────────────────────────────────
         else:
