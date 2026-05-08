@@ -107,6 +107,11 @@ max_retries = 5
                     retry_count = 0  # Reset on successful connect
                     log.info("✅ WebSocket connected for game=%s", self.game_id)
 
+                    await ws.send(json.dumps({
+    "type": "hello",
+    "entryType": "free"
+}))
+
                     # Start ping keepalive
                     self._ping_task = asyncio.create_task(self._ping_loop())
 
